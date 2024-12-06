@@ -35,7 +35,11 @@
             $ind = $_POST['delete'];
             array_splice($arrName, $ind, 1);
         }
-        foreach ($arrName $arrGroup as $name $group => $val $value) {
+        if(isset($_POST['deleteGroup'])) {
+            $ind = $_POST['deleteGroup'];
+            array_splice($arrGroup, $ind, 1);
+        }
+        foreach ($arrName as $name => $val) {
             echo "<form action='index.php' method='post' class='flex'>
             <input type='hidden' name='array' value='" .json_encode($arrName). "'>
             <table>
@@ -49,6 +53,8 @@
             <button type='submit' name='delete' value='$name' class='del'>-</button>
             
             </form>";
+        }
+        foreach ($arrGroup as $group => $value) {
             echo "<form action='index.php' method='post' class='flex'>
             <input type='hidden' name='array' value='" .json_encode($arrGroup). "'>
             <table>
@@ -59,29 +65,14 @@
                     <td>$value</td>
                 </tbody>
             </table>
-            <button type='submit' name='delete' value='$group' class='del'>-</button>
+            <button type='submit' name='deleteGroup' value='$group' class='del'>-</button>
             
             </form>";
         }
-        // foreach () {
-        //     echo "<form action='index.php' method='post' class='flex'>
-        //     <input type='hidden' name='array' value='" .json_encode($arrGroup). "'>
-        //     <table>
-        //         <thead>
-        //             <th>Группа</th>
-        //         </thead>
-        //         <tbody>
-        //             <td>$value</td>
-        //         </tbody>
-        //     </table>
-        //     <button type='submit' name='delete' value='$group' class='del'>-</button>
-            
-        //     </form>";
-        // }
         ?>
         <form action="index.php" method="post">
-            <input type="text" name="name">
-            <input type="text" name="group">
+            <input type="text" name="name" placeholder="name">
+            <input type="text" name="group" placeholder="group">
             <input type="hidden" name="array" value='<?= json_encode($arrName)?>'>
             <input type="hidden" name="array_group" value='<?= json_encode($arrGroup)?>'>
             <button type="submit">+</button>
