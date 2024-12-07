@@ -91,22 +91,23 @@
             foreach ($Name_group as $nameGroup => $val) {
                 echo "<tr>";
                 // var_dump($nameGroup);
-                foreach ($val as $h => $n) {
-                    echo "<td>$n</td>";
+                foreach ($val as $nameGroup_Init => $nameGroupString) {
+                    var_dump($nameGroupString);
+                    echo "<td>$nameGroupString</td>";
                     // echo "<pre>"; 
                     // var_dump($Name_group[0]["group"]);
-                    if($n == "11-ЕУ") {
-                        foreach ($group_Grafik[$n] as $group) {
+                    if($nameGroupString == "11-ЕУ") {
+                        foreach ($group_Grafik[$nameGroupString] as $group) {
                             echo "<td>$group</td>";
                         }
                     }
-                    if($n == "ПЦБ-11-07") {
-                        foreach ($group_Grafik[$n] as $group) {
+                    if($nameGroupString == "ПЦБ-11-07") {
+                        foreach ($group_Grafik[$nameGroupString] as $group) {
                             echo "<td>$group</td>";
                         }
                     }
-                    if($n == "БО-11") {
-                        foreach ($group_Grafik[$n] as $group) {
+                    if($nameGroupString == "БО-11") {
+                        foreach ($group_Grafik[$nameGroupString] as $group) {
                             echo "<td>$group</td>";
                         }
                     }
