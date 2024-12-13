@@ -89,7 +89,7 @@
                     </thead>
                     <tbody>";
             foreach ($Name_group as $nameGroup => $val) {
-                var_dump($val);
+                // var_dump($val);
                 echo "<tr>";
                 // var_dump($nameGroup);
                 foreach ($val as $nameGroup_Init => $nameGroupString) {
@@ -129,18 +129,19 @@
         } else { 
             $arrName = [];
         }
-        if(isset($_POST['name'])) {
-            $name = $_POST['name'];
-            array_push($arrName, $val);
+        if(isset($_POST['name_input'])) {
+            $name_input = $_POST['name_input'];
+            array_push($nameGroup, $name_input);
         } else {
-            $name = '';
+            $name_input = '';
         }
         foreach ($arrName as $value) {
             echo $value . "<br>";
         } 
-    ?>
+        var_dump($nameGroup);
+        ?>
     <form action="index.php" method="post">
-        <input type="text" name="name">
+        <input type="text" name="name_input">
         <input type="hidden" name="array" value='<?= json_encode($arrName)?>'>
         <button type="submit">enter</button>
     </form>
