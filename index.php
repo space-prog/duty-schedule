@@ -57,15 +57,15 @@
                     "group" => "11-ЕУ",
                     ]
                 ];
-        }
-        if(isset($_SESSION['group_Grafik'])) {
-            $group_Grafik = $_SESSION['group_Grafik'];
-        } else {
-            $group_Grafik = [
-                "11-ЕУ" => ["09:00", "10:00", "11:00", "12:00", "13:00"],
-                "ПЦБ-11-07" => ["18:00", "17:00", "16:00", "15:00", "14:00"],
-                "БО-11" => ["12:00", "11:00", "13:00", "18:00", "08:00"],
-            ]; 
+            }
+            if(isset($_SESSION['group_Grafik'])) {
+                $group_Grafik = $_SESSION['group_Grafik'];
+            } else {
+                $group_Grafik = [
+                    "11-ЕУ" => ["09:00", "10:00", "11:00", "12:00", "13:00"],
+                    "ПЦБ-11-07" => ["18:00", "17:00", "16:00", "15:00", "14:00"],
+                    "БО-11" => ["12:00", "11:00", "13:00", "18:00", "08:00"],
+                ]; 
         }
         if(isset($_POST["del"])) {
             $ind = +($_POST["del"]);
@@ -89,10 +89,11 @@
                     </thead>
                     <tbody>";
             foreach ($Name_group as $nameGroup => $val) {
+                var_dump($val);
                 echo "<tr>";
                 // var_dump($nameGroup);
                 foreach ($val as $nameGroup_Init => $nameGroupString) {
-                    var_dump($nameGroupString);
+                    // var_dump($nameGroupString);
                     echo "<td>$nameGroupString</td>";
                     // echo "<pre>"; 
                     // var_dump($Name_group[0]["group"]);
@@ -123,6 +124,25 @@
                 
             </tbody>
         ";
-?>
+        if(isset($_POST['array'])) {
+            $arrName = json_decode($_POST['array'], true);
+        } else { 
+            $arrName = [];
+        }
+        if(isset($_POST['name'])) {
+            $name = $_POST['name'];
+            array_push($arrName, $val);
+        } else {
+            $name = '';
+        }
+        foreach ($arrName as $value) {
+            echo $value . "<br>";
+        } 
+    ?>
+    <form action="index.php" method="post">
+        <input type="text" name="name">
+        <input type="hidden" name="array" value='<?= json_encode($arrName)?>'>
+        <button type="submit">enter</button>
+    </form>
 </body>
 </html>
