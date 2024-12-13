@@ -124,6 +124,7 @@
                 
             </tbody>
         ";
+        var_dump($Name_group);
         if(isset($_POST['array'])) {
             $arrName = json_decode($_POST['array'], true);
         } else { 
@@ -131,14 +132,13 @@
         }
         if(isset($_POST['name_input'])) {
             $name_input = $_POST['name_input'];
-            array_push($nameGroup, $name_input);
+            array_push($Name_group, $name_input);
         } else {
             $name_input = '';
         }
         foreach ($arrName as $value) {
             echo $value . "<br>";
         } 
-        var_dump($nameGroup);
         ?>
     <form action="index.php" method="post">
         <input type="text" name="name_input">
