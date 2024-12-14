@@ -57,15 +57,15 @@
                     "group" => "11-ЕУ",
                     ]
                 ];
-        }
-        if(isset($_SESSION['group_Grafik'])) {
-            $group_Grafik = $_SESSION['group_Grafik'];
-        } else {
-            $group_Grafik = [
-                "11-ЕУ" => ["09:00", "10:00", "11:00", "12:00", "13:00"],
-                "ПЦБ-11-07" => ["18:00", "17:00", "16:00", "15:00", "14:00"],
-                "БО-11" => ["12:00", "11:00", "13:00", "18:00", "08:00"],
-            ]; 
+            }
+            if(isset($_SESSION['group_Grafik'])) {
+                $group_Grafik = $_SESSION['group_Grafik'];
+            } else {
+                $group_Grafik = [
+                    "11-ЕУ" => ["09:00", "10:00", "11:00", "12:00", "13:00"],
+                    "ПЦБ-11-07" => ["18:00", "17:00", "16:00", "15:00", "14:00"],
+                    "БО-11" => ["12:00", "11:00", "13:00", "18:00", "08:00"],
+                ]; 
         }
         if(isset($_POST['name'])) {
             $name_input = $_POST['name'];
@@ -101,24 +101,26 @@
                     </thead>
                     <tbody>";
             foreach ($Name_group as $nameGroup => $val) {
+                // var_dump($val);
                 echo "<tr>";
                 // var_dump($nameGroup);
-                foreach ($val as $h => $n) {
-                    echo "<td>$n</td>";
+                foreach ($val as $nameGroup_Init => $nameGroupString) {
+                    // var_dump($nameGroupString);
+                    echo "<td>$nameGroupString</td>";
                     // echo "<pre>"; 
                     // var_dump($Name_group[0]["group"]);
-                    if($n == "11-ЕУ") {
-                        foreach ($group_Grafik[$n] as $group) {
+                    if($nameGroupString == "11-ЕУ") {
+                        foreach ($group_Grafik[$nameGroupString] as $group) {
                             echo "<td>$group</td>";
                         }
                     }
-                    if($n == "ПЦБ-11-07") {
-                        foreach ($group_Grafik[$n] as $group) {
+                    if($nameGroupString == "ПЦБ-11-07") {
+                        foreach ($group_Grafik[$nameGroupString] as $group) {
                             echo "<td>$group</td>";
                         }
                     }
-                    if($n == "БО-11") {
-                        foreach ($group_Grafik[$n] as $group) {
+                    if($nameGroupString == "БО-11") {
+                        foreach ($group_Grafik[$nameGroupString] as $group) {
                             echo "<td>$group</td>";
                         }
                     }
