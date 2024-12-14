@@ -67,6 +67,18 @@
                 "БО-11" => ["12:00", "11:00", "13:00", "18:00", "08:00"],
             ]; 
         }
+        if(isset($_POST['name'])) {
+            $name_input = $_POST['name'];
+            $group_input = $_POST['group'];
+            // foreach($Name_group as $arr => $valueName) {
+            //     echo "<pre>";
+            //     var_dump($valueName);
+            // }
+            $Name_group[] = ['name' => $_POST['name'], 'group' => $_POST['group']];
+            $_SESSION['Name_group'] = $Name_group;
+            // var_dump($Name_group);
+        }
+        
         if(isset($_POST["del"])) {
             $ind = +($_POST["del"]);
             // echo "<pre>";
@@ -121,7 +133,18 @@
             </tr>
                 
             </tbody>
+            </table>
         ";
+
 ?>
+    <form action="index.php" method="post">
+        <input type="text" name="name">
+        <select name="group">
+            <option value="ПЦБ-11-07">ПЦБ-11-07</option>
+            <option value="БО-11">БО-11</option>
+            <option value="11-ЕУ">11-ЕУ</option>
+        </select>
+        <button type="submit">+</button>
+    </form>
 </body>
 </html>
